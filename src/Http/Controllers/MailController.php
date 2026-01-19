@@ -12,7 +12,7 @@ class MailController extends Controller
     public function index(Request $request)
     {
         $mailQuery = MailLog::select(['id', 'from_email', 'to_email', 'subject', 'sent_at', 'from_name', 'attachments'])
-            ->selectRaw('SUBSTRING(content_text, 1, 300) as content_text');
+            ->selectRaw('SUBSTR(content_text, 1, 300) as content_text');
 
         $search = $request->input('search');
         $dates = $request->input('dates');
